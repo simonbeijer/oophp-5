@@ -4,7 +4,7 @@ views:
         region: sidebar-right
         template: anax/v2/block/default
         data:
-            meta: 
+            meta:
                 type: single
                 route: block/om-kursrepo
 
@@ -12,17 +12,22 @@ views:
         region: sidebar-right
         template: anax/v2/block/default
         data:
-            meta: 
+            meta:
                 type: single
                 route: block/om-redovisa
 ---
 Om
 =========================
 
-Detta innehåll är skrivet i markdown och du hittar innehållet i filen `content/om.md`.
+Detta är en kurs i oophp som hålls på Blekinge tekniska högskola.
+Den är en kurs där man får lära sig om oophp genom att jobba inom ett ramverk.
 
-Skriv några kloka ord om kursen?
+Oophp står för object oriented programming i språket php.
 
-Lägg till en fin och representativ bild för kursen, enligt ditt eget val.
+Object oriented programming är ett sätt att jobba med objekt genom klasser där man kan definierar objekt med typer som man kan skickar in och även använda sig av funktioner.
 
-[FIGURE src=image/car.png?w=740&filter=grayscale&f1=colorize,0,30,0,0 caption="En fin bil som demobild, lite oklart hur den är representativ, men ändå..."]
+Detta kan ofta spara mycket tid och är ett smidigt sätt att skapa nya objekt.
+
+
+
+[FIGURE src=image/php.png?w=400 caption="php"]

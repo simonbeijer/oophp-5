@@ -4,24 +4,25 @@ title: "Min fina titel"
 Min me-sida i kursen oophp
 =========================
 
-Detta innehåll är skrivet i markdown och du hittar innehållet i filen `content/index.md`.
+[FIGURE src="image/SimonIRepan.jpeg?w=350" class="right" caption="Jag i replokalen."]
 
-[FIGURE src="image/me.jpg?w=400&a=4,27,11,0&cf&sharpen" class="right" caption="Bild på mig, ätandes glass och hållandes ett kort på någon jultillställning."]
+Här är min me-sida i kursen oophp på Blekinge tekniska högskola.
 
-Detta är min me-sida i kursen. Denna sidan innehåller en presentation av mig själv. Underhåll denna sidan under hela kursen och uppdatera den efter hand och behov.
+Hejsan jag heter Simon!
+Jag kommer ifrån ett ställe som heter Hovslätt det ligger lite utanför Jönköping.
+Men nu bor jag inne i Jönköping.
 
-Så, en presentation en bra början. Skriv några ord om dig själv. Jag börjar.
+Jag gillar att hålla på med datorer på olika sätt.
+Jag gillar att spela spel ofta Dota 2, men även kolla på youtube och lyssna på musik.
+När jag var yngre designade jag mina egna teman och photoshoppade mycket. Tyvärr tappade jag mina kunskaper när jag hittade andra intressen.
+Därför pluggar jag nu webbprogrammering för att hitta tillbaka till mina gamla intresse för att skapade i dator miljöer.
 
-Mitt namn är Mikael Roos. Född och uppvuxen i Bankeryd, Småland, strax utanför Jönköping, i ett villaområde som byggdes upp samtidigt som vi flyttade in där. Jag gillade landhockey och har spelat bandy och hockey samt gått bowlinggymnasiet i Nässjö. Jag har varit städare, diskare, kallskänka, servitör och kock. På ett bananskal landade jag i Ronneby när jag började högskolan 1990 där och nu är jag kvar med fru, barn och så vidare.
+Något annat jag och gör på datorn är musik, jag spelar gitarr, bas och lite trummor. Jag brukar ofta spela in instrument och göra låtar i ett program som heter Logic Pro X, som är ett musikproduktions program som används på Mac datorer.
 
-Programmering har alltid intresserat mig sedan 13-årsåldern och min första dator var en Spectravideo 328 med bandspelare.
+När jag inte sitter vid datorn så brukar jag träna, det blir lite allt möjligt men oftast Thaiboxning som jag även tävlar och coachar inom
+När jag inte är i ringen kan jag vara ute och spela eller springa eller cykla i skogen.
 
-Om jag skall nämna någon hobby, förutom webbprogrammering, så får det bli att bära sten på sommarstugetomten, och det finns sten så det räcker och blir över.
-
-Till och från får jag för mig att börja på lite hobbies, ett år satsade jag på pokerspel, ett annat år var det geocaching, sedan turfing och nu på sistone verkar släktforskning lite spännande. Annars kan jag alltid koda på något av mina opensource-projekt, det finns och blir över.
-
-Vill du läsa mer om vad jag jobbat med så kan du kika på min [Linkedin-profil](https://www.linkedin.com/in/pt90mr/).
-
-Vi syns och hörs i forum och chatt!
-
-/Mikael
+Annars lagar jag mycket mat och ser det som en kul hobby, och testar gärna nya saker
+Mitt senaste projekt har varit att göra den perfekta äggröran och jag tror jag börjar närma mig slutat.
+Fråga gärna efter receptet.
+/Simon

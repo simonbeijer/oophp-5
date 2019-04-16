@@ -15,13 +15,13 @@ return [
         "data" => [
             "baseTitle" => " | oophp",
             "bodyClass" => null,
-            "favicon" => "favicon.ico",
+            "favicon" => "favicon1.ico",
             "htmlClass" => null,
             "lang" => "sv",
             "stylesheets" => [
                 // Change here to set another default stylesheet
-                "css/dbwebb-se.min.css",
-                //"css/another.min.css",
+                // "css/dbwebb-se.min.css",
+                "css/my.min.css",
             ],
             "javascripts" => [
                 "js/responsive-menu.js",
