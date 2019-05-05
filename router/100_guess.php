@@ -2,8 +2,9 @@
 /**
  * Create routes using $app programming style.
  */
-
 //var_dump(array_keys(get_defined_vars()));
+
+
 
 /**
  * Init the game and redirect to play the game.
@@ -13,6 +14,7 @@ $app->router->get("guess/init", function () use ($app) {
     $game = new Sibj\Guess\Guess();
     $_SESSION["number"] = $game->number();
     $_SESSION["tries"] = $game->tries();
+    // $_SESSION["newRes"] = "New Game";
 
     return $app->response->redirect("guess/play");
 });
@@ -35,17 +37,17 @@ $app->router->get("guess/play", function () use ($app) {
     //$number = $_SESSION["number"] ?? null;
     $tries = $_SESSION["tries"] ?? null;
     $res = $_SESSION["res"] ?? null;
+    // $res = $_SESSION["newRes"] ?? null;
     $guess = $_SESSION["guess"] ?? null;
     $doCheat = $_SESSION["doCheat"] ?? null;
     // $doInit = $_SESSION["doInit"] ?? null;
     $number = $_SESSION["number"] ?? null;
-    $number = $_SESSION["newRes"] ?? null;
 
 
     $_SESSION["res"] = null;
+    // $_SESSION["newRes"] = null;
     $_SESSION["guess"] = null;
     $_SESSION["doCheat"] = null;
-    $_SESSION["newRes"] = null;
     // $_SESSION["doInit"] = null;
     // $_SESSION["doCheat"] = null;
     // $_SESSION["number"] = null;
@@ -65,6 +67,7 @@ $app->router->get("guess/play", function () use ($app) {
         "res" => $res,
         "doGuess" => $doGuess ?? null,
         "doCheat" => $doCheat ?? null,
+        // "newRes" => $newRes ?? null
     ];
 
     $app->page->add("guess/play", $data);
@@ -105,7 +108,7 @@ $app->router->post("guess/play", function () use ($app) {
         $game = new Sibj\Guess\Guess();
         $_SESSION["number"] = $game->number();
         $_SESSION["tries"] = $game->tries();
-        $_SESSION["newRes"] = "New game";
+        // $_SESSION["newRes"] = "New Game";
     }
 
     // $data = [

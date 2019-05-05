@@ -25,9 +25,6 @@ namespace Anax\View;
     </fieldset>
 </form>
 
-<?php if ($newRes) :?>
-    <p><b><?= $res?></b></p>
-<?php endif;?>
 
 <?php if ($res) :?>
     <p>You guess was <?= $guess?> it's <b><?= $res?></b></p>
@@ -37,3 +34,7 @@ namespace Anax\View;
     <b>Cheat</b>
     <p>The number was <b><?= $number?></b></p>
 <?php endif;?>
+
+<!-- <?php if ($newRes) :?>
+    <b><?= $newRes?></b>
+<?php endif;?> -->

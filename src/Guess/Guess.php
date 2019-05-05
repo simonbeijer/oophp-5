@@ -94,16 +94,14 @@ class Guess
         $this->tries --;
         if ($guess === $this->number) {
             $this->res = "Correct! Press'Start from beginning' to play again.";
-            session_destroy();
         } elseif ($guess > $this->number) {
             $this->res = "To High!";
         } else {
             $this->res = "To Low!";
-        }
-        if ($this->tries === -1) {
-            session_destroy();
         } if ($this->tries === 0) {
             $this->res = "No more trys! Press'Start from beginning' to play again.";
+        } if ($this->tries === -1) {
+            session_destroy();
         }
           return $this->res;
     }
