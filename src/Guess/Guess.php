@@ -94,6 +94,7 @@ class Guess
         $this->tries --;
         if ($guess === $this->number) {
             $this->res = "Correct! Press'Start from beginning' to play again.";
+            $this->tries = null ;
         } elseif ($guess > $this->number) {
             $this->res = "To High!";
         } else {

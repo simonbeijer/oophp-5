@@ -35,6 +35,7 @@ namespace Anax\View;
     <p>The number was <b><?= $number?></b></p>
 <?php endif;?>
 
-<!-- <?php if ($newRes) :?>
-    <b><?= $newRes?></b>
-<?php endif;?> -->
+
+<?php if ($new) :?>
+    <p><b><?= $new?></b></p>
+<?php endif;?>

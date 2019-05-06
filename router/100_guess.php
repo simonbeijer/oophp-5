@@ -14,7 +14,7 @@ $app->router->get("guess/init", function () use ($app) {
     $game = new Sibj\Guess\Guess();
     $_SESSION["number"] = $game->number();
     $_SESSION["tries"] = $game->tries();
-    // $_SESSION["newRes"] = "New Game";
+    $_SESSION["new"] = "New Game";
 
     return $app->response->redirect("guess/play");
 });
@@ -37,7 +37,7 @@ $app->router->get("guess/play", function () use ($app) {
     //$number = $_SESSION["number"] ?? null;
     $tries = $_SESSION["tries"] ?? null;
     $res = $_SESSION["res"] ?? null;
-    // $res = $_SESSION["newRes"] ?? null;
+    $new = $_SESSION["new"] ?? null;
     $guess = $_SESSION["guess"] ?? null;
     $doCheat = $_SESSION["doCheat"] ?? null;
     // $doInit = $_SESSION["doInit"] ?? null;
@@ -45,7 +45,7 @@ $app->router->get("guess/play", function () use ($app) {
 
 
     $_SESSION["res"] = null;
-    // $_SESSION["newRes"] = null;
+    $_SESSION["new"] = null;
     $_SESSION["guess"] = null;
     $_SESSION["doCheat"] = null;
     // $_SESSION["doInit"] = null;
@@ -65,9 +65,9 @@ $app->router->get("guess/play", function () use ($app) {
         "tries" => $tries,
         "number" => $number ?? null,
         "res" => $res,
+        "new" => $new,
         "doGuess" => $doGuess ?? null,
         "doCheat" => $doCheat ?? null,
-        // "newRes" => $newRes ?? null
     ];
 
     $app->page->add("guess/play", $data);
@@ -108,7 +108,7 @@ $app->router->post("guess/play", function () use ($app) {
         $game = new Sibj\Guess\Guess();
         $_SESSION["number"] = $game->number();
         $_SESSION["tries"] = $game->tries();
-        // $_SESSION["newRes"] = "New Game";
+        $_SESSION["new"] = "New Game";
     }
 
     // $data = [
