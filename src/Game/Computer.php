@@ -47,7 +47,6 @@ class Computer
         }
     }
 
-
     /**
      * Get the throws.
      *
@@ -67,9 +66,7 @@ class Computer
 
     public function addScore(int $counter2)
     {
-
         $this->score = $counter2;
-
     }
 
     /**
@@ -83,7 +80,6 @@ class Computer
         return $this->score;
     }
 
-
     /**
      * Get the sum of all dices.
      *
@@ -94,7 +90,6 @@ class Computer
         return array_sum($this->values);
     }
 
-
     /**
      * Throw dice and cheak if the number, if the number is 0 counter empty
      * If number 100 there is a winner
@@ -104,12 +99,12 @@ class Computer
 
     public function cheakNumber(int $sum2)
     {
-        if ( in_array(1, $this->values)) {
+        if (in_array(1, $this->values)) {
             $this->res = "Computer lost its points, your turn to throw.";
             $_SESSION["counter2"] = 0;
         } elseif (in_array(6, $this->values) | $sum2 > 8) {
             $this->res = "Computer is done, your turn to throw.";
-        } if ($this->score > 100) {
+        } if ($this->score > 99) {
             $this->res = "You have lost, computers will take over the world.<br>Just play again!";
             $_SESSION["counter"] = 0;
             $_SESSION["counter2"] = 0;

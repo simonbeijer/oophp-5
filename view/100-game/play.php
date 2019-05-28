@@ -1,6 +1,7 @@
 <?php
 
 namespace Anax\View;
+
 ?>
 <h1>100 GAME!</h1>
 

@@ -49,12 +49,6 @@ $app->router->get("100-game/play", function () use ($app) {
     $counter2 = $_SESSION["counter2"] ?? null;
     $sum2 = $_SESSION["sum2"] ?? null;
 
-
-    $game = $_SESSION["game"] ?? null;
-    $computer = $_SESSION["computer"] ?? null;
-
-
-
     $_SESSION["throw"] = null;
     $_SESSION["save"] = null;
     $_SESSION["simulate"] = null;
@@ -113,59 +107,42 @@ $app->router->post("100-game/play", function () use ($app) {
     $sum2 = $_SESSION["sum2"] ?? null;
 
 
-    $game = $_SESSION["game"] ?? null;
-    $computer = $_SESSION["computer"] ?? null;
-
-
 if ($_POST["throw"]) {
-    $_SESSION["throw"] = $throw;
-    $game = new Sibj\Game\Game();
-    $game->random();
-    $_SESSION["sum"] = $game->sum();
-    $sum = $_SESSION["sum"];
-    $counter += $game->sum();
-    $_SESSION["counter"] = $counter;
-    $game->addScore($counter);
-    $_SESSION["values"] = implode(", ", $game->values());
-    $counter = $_SESSION["counter"];
-
-    $score = $game->score();
-    $_SESSION["score"] = $score;
-    $res = $game->cheakNumber();
-    $_SESSION["res"] = $res;
+        $_SESSION["throw"] = $throw;
+        $game = new Sibj\Game\Game();
+        $game->random();
+        $_SESSION["sum"] = $game->sum();
+        $sum = $_SESSION["sum"];
+        $counter += $game->sum();
+        $_SESSION["counter"] = $counter;
+        $game->addScore($counter);
+        $_SESSION["values"] = implode(", ", $game->values());
+        $counter = $_SESSION["counter"];
+        $score = $game->score();
+        $_SESSION["score"] = $score;
+        $res = $game->cheakNumber();
+        $_SESSION["res"] = $res;
     } elseif ($save) {
-    $_SESSION["save"] = $save;
-    $res = "Saved, simulate for computer.";
-    $_SESSION["res"] = $res;
+        $_SESSION["save"] = $save;
+        $res = "Saved, simulate for computer.";
+        $_SESSION["res"] = $res;
 }
 
 if ($simulate) {
-    $_SESSION["simulate"] = $simulate;
-    $computer = new Sibj\Game\Computer();
-    $computer->random();
-    $_SESSION["sum2"] = $computer->sum();
-    $sum2 = $_SESSION["sum2"];
-    $counter2 += $computer->sum();
-    $_SESSION["counter2"] = $counter2;
-    $computer->addScore($counter2);
-    $_SESSION["values2"] = implode(", ", $computer->values());
-    $counter2 = $_SESSION["counter2"];
-    $score2 = $computer->score();
-    $_SESSION["score2"] = $score2;
-    $res = $computer->cheakNumber($sum2);
-    $_SESSION["res"] = $res;
-    //
-    // if ( in_array(1, $computer->values())) {
-    //     $res = "Computer lost its points, your turn to throw.";
-    //     $_SESSION["score2"] = null;
-    // } elseif (in_array(6, $computer->values()) | $computer->sum() >= 9) {
-    //     $res = "Computer is done, your turn to throw.";
-    //     $score2 = $_SESSION["score2"];
-    // } if ($score2 >= 100) {
-    //     $res = "You have lost, computers will take over the world.<br>Just play again!";
-    //     $_SESSION["score"] = null;
-    //     $_SESSION["score2"] = null;
-    // }
+        $_SESSION["simulate"] = $simulate;
+        $computer = new Sibj\Game\Computer();
+        $computer->random();
+        $_SESSION["sum2"] = $computer->sum();
+        $sum2 = $_SESSION["sum2"];
+        $counter2 += $computer->sum();
+        $_SESSION["counter2"] = $counter2;
+        $computer->addScore($counter2);
+        $_SESSION["values2"] = implode(", ", $computer->values());
+        $counter2 = $_SESSION["counter2"];
+        $score2 = $computer->score();
+        $_SESSION["score2"] = $score2;
+        $res = $computer->cheakNumber($sum2);
+        $_SESSION["res"] = $res;
 }
 
 
