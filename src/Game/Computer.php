@@ -4,7 +4,7 @@ namespace Sibj\Game;
 /**
  * 100 Computer, a class supporting the game through GET, POST and SESSION.
  */
-class Computer
+class Computer extends Game
 {
     /**
      * @var int $dices   Number of dices.
@@ -29,7 +29,7 @@ class Computer
         $this->values = [];
 
         for ($i = 0; $i < $dices; $i++) {
-            $this->dices[]  = rand(1, 6);
+            $this->dices[]  = new Game;
             $this->values[] = $i;
         }
     }
@@ -97,13 +97,16 @@ class Computer
      * @return string to show the status of game.
      */
 
-    public function cheakNumber(int $sum2)
+    public function checkNumberSum(int $sum2)
     {
         if (in_array(1, $this->values)) {
             $this->res = "Computer lost its points, your turn to throw.";
             $_SESSION["counter2"] = 0;
-        } elseif (in_array(6, $this->values) | $sum2 > 8) {
+        }
+        elseif (in_array(6, $this->values) | $sum2 > 8) {
             $this->res = "Computer is done, your turn to throw.";
+        } else {
+            $this->res = "Simulate again.";
         } if ($this->score > 99) {
             $this->res = "You have lost, computers will take over the world.<br>Just play again!";
             $_SESSION["counter"] = 0;

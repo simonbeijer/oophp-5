@@ -12,11 +12,12 @@
 $app->router->get("100-game/init", function () use ($app) {
     // Init the session for the gamestart.
     $game = new Sibj\Game\Game();
+    $_SESSION["counter"] = null;
 
     $computer = new Sibj\Game\Computer();
+    $_SESSION["counter2"] = null;
 
     $_SESSION["new"] = "New Game";
-
 
     return $app->response->redirect("100-game/play");
 });
@@ -107,7 +108,7 @@ $app->router->post("100-game/play", function () use ($app) {
     $sum2 = $_SESSION["sum2"] ?? null;
 
 
-if ($_POST["throw"]) {
+    if ($_POST["throw"]) {
         $_SESSION["throw"] = $throw;
         $game = new Sibj\Game\Game();
         $game->random();
@@ -120,15 +121,15 @@ if ($_POST["throw"]) {
         $counter = $_SESSION["counter"];
         $score = $game->score();
         $_SESSION["score"] = $score;
-        $res = $game->cheakNumber();
+        $res = $game->checkNumber();
         $_SESSION["res"] = $res;
-    } elseif ($save) {
+    }   elseif ($save) {
         $_SESSION["save"] = $save;
         $res = "Saved, simulate for computer.";
         $_SESSION["res"] = $res;
-}
+    }
 
-if ($simulate) {
+    if ($simulate) {
         $_SESSION["simulate"] = $simulate;
         $computer = new Sibj\Game\Computer();
         $computer->random();
@@ -141,9 +142,9 @@ if ($simulate) {
         $counter2 = $_SESSION["counter2"];
         $score2 = $computer->score();
         $_SESSION["score2"] = $score2;
-        $res = $computer->cheakNumber($sum2);
+        $res = $computer->checkNumberSum($sum2);
         $_SESSION["res"] = $res;
-}
+    }
 
 
     return $app->response->redirect("100-game/play");

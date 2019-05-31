@@ -96,7 +96,7 @@ class Game
      * @return string to show the status of game.
      */
 
-    public function cheakNumber()
+    public function checkNumber()
     {
         if (in_array(1, $this->values)) {
             $this->res = "You lost you points, simulate for computer.";
