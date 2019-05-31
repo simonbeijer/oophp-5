@@ -23,7 +23,7 @@ class ComputerCreateObjectTest extends TestCase
 
     /**
      * Construct object and verify that the object has the expected
-     * properties. Use no arguments.
+     * properties. Sum under 12(6+6).
      */
     public function testCreateObjectSumLess()
     {
@@ -37,7 +37,7 @@ class ComputerCreateObjectTest extends TestCase
 
     /**
      * Construct object and verify that the object has the expected
-     * properties. Use no arguments.
+     * properties. Sum over 1 (1+1).
      */
     public function testCreateObjectSumGreater()
     {
@@ -48,26 +48,24 @@ class ComputerCreateObjectTest extends TestCase
 
         $this->assertGreaterThan(1, $res);
     }
+    /**
+     * Construct object and verify that the object has the expected
+     * properties. Correct values.
+     */
 
-    // public function testCreateObjectValues()
-    // {
-    //     $computer = new Computer();
-    //     $this->assertInstanceOf("\Sibj\Game\Game", $computer);
-    //     $res = $computer->random();
-    //
-    //     $this->assertIsArray($res);
-    // }
-    //
-    // public function testCreateObjectScore()
-    // {
-    //     $computer = new Computer();
-    //     $this->assertInstanceOf("\Sibj\Game\Game", $computer);
-    //     $computer->random();
-    //     $res = $computer->score();
-    //
-    //     $this->assertIsArray($computer);
-    // }
-    //
+    public function testCreateObjectValues()
+    {
+        $computer = new Computer(4, 2);
+        $this->assertInstanceOf("\Sibj\Game\Game", $computer);
+
+        $res = $computer->values();
+    }
+
+    /**
+     * Construct object and verify that the object has the expected
+     * properties. Correct addScore.
+     */
+
     public function testCreateObjectAddScore()
     {
         $computer = new Computer();
@@ -78,163 +76,19 @@ class ComputerCreateObjectTest extends TestCase
 
         $this->assertEquals($exp, $res);
     }
+    /**
+     * Construct object and verify that the object has the expected
+     * properties. CheckNumberSum.
+     */
+
+    public function testCreateObjectCheckNumberSum()
+    {
+        $computer = new Computer();
+        $this->assertInstanceOf("\Sibj\Game\Game", $computer);
+
+        $res = $computer->CheckNumberSum(1, 2);
+        $exp = "Computer lost its points, your turn to throw.";
+
+        $this->assertEquals($exp, $res);
+    }
 }
-// {
-//     /**
-//      * Construct object and verify that the object has the expected
-//      * properties. Use no arguments.
-//      */
-//     public function testCreateObjectNoArguments()
-//     {
-//         $computer = new Computer();
-//         $this->assertInstanceOf("\Sibj\Game\Game", $computer);
-//
-//         $res = $computer->random();
-//
-//     }
-//
-//     /**
-//      * Construct object and verify that the object has the expected
-//      * properties. Use no arguments.
-//      */
-//     public function testCreateObjectSumLess()
-//     {
-//         $computer = new Computer();
-//         $this->assertInstanceOf("\Sibj\Game\Game", $computer);
-//         $computer->random();
-//         $res = $computer->sum();
-//
-//         $this->assertLessThan(13, $res);
-//
-//     }
-//
-//     /**
-//      * Construct object and verify that the object has the expected
-//      * properties. Use no arguments.
-//      */
-//     public function testCreateObjectSumGreater()
-//     {
-//         $computer = new Computer();
-//         $this->assertInstanceOf("\Sibj\Game\Game", $computer);
-//         $computer->random();
-//         $res = $computer->sum();
-//
-//         $this->assertGreaterThan(1, $res);
-// }
-
-
-    //
-    //
-    // /**
-    //  * Construct object and verify that the object has the expected
-    //  * properties. Use only first argument.
-    //  */
-    // public function testCreateObjectFirstArgument()
-    // {
-    //     $guess = new Game(42);
-    //     $this->assertInstanceOf("\Mos\Game\Game", $guess);
-    //
-    //     $res = $guess->tries();
-    //     $exp = 6;
-    //     $this->assertEquals($exp, $res);
-    //
-    //     $res = $guess->number();
-    //     $exp = 42;
-    //     $this->assertEquals($exp, $res);
-    // }
-    //
-    //
-    //
-    // /**
-    //  * Construct object and verify that the object has the expected
-    //  * properties. Use both arguments.
-    //  */
-    // public function testCreateObjectBothArguments()
-    // {
-    //     $guess = new Game(42, 7);
-    //     $this->assertInstanceOf("\Mos\Game\Game", $guess);
-    //
-    //     $res = $guess->tries();
-    //     $exp = 7;
-    //     $this->assertEquals($exp, $res);
-    //
-    //     $res = $guess->number();
-    //     $exp = 42;
-    //     $this->assertEquals($exp, $res);
-    // }
-    //
-    //
-    // /**
-    //  * Test if there is and out put on right number.
-    //  */
-    // public function testIfGameRight()
-    // {
-    //     $guess = new Game(42);
-    //     $this->assertInstanceOf("\Mos\Game\Game", $guess);
-    //
-    //     $res = $guess->makeGame(42);
-    //     $exp = "correct!!!";
-    //     $this->assertEquals($exp, $res);
-    // }
-    //
-    // /**
-    //  * Test if there is and out put on high number.
-    //  */
-    // public function testIfGameHigh()
-    // {
-    //     $guess = new Game(41);
-    //     $this->assertInstanceOf("\Mos\Game\Game", $guess);
-    //
-    //     $res = $guess->makeGame(42);
-    //     $exp = "to high...";
-    //     $this->assertEquals($exp, $res);
-    // }
-    //
-    // /**
-    //  * Test if there is and out put on low number.
-    //  */
-    // public function testIfGameLow()
-    // {
-    //     $guess = new Game(43);
-    //     $this->assertInstanceOf("\Mos\Game\Game", $guess);
-    //
-    //     $res = $guess->makeGame(42);
-    //     $exp = "to low...";
-    //     $this->assertEquals($exp, $res);
-    // }
-    //
-    // /**
-    //  * Test if there is and out put no more tries.
-    //  */
-    // public function testIfNoMoreTries()
-    // {
-    //     $guess = new Game(42, 0);
-    //     $this->assertInstanceOf("\Mos\Game\Game", $guess);
-    //
-    //     $res = $guess->makeGame(5);
-    //     $exp = "no guesses left.";
-    //     $this->assertEquals($exp, $res);
-    // }
-    //
-    // /**
-    //  * Test if there is a exception if guess exception.
-    //  */
-    // public function testIfGameException()
-    // {
-    //     $guess = new Game(101);
-    //     $this->assertInstanceOf("\Mos\Game\Game", $guess);
-    // }
-    //
-    // /**
-    //  * Test if there is and out put on out of bounce number.
-    //  * @expectedException \Exception
-    //  */
-    // public function testIfGameOutOfBounce()
-    // {
-    //     $guess = new Game(42);
-    //     $this->assertInstanceOf("\Mos\Game\Game", $guess);
-    //
-    //     $guess->makeGame(101);
-    //     $this->expectExceptionMessage("Your guess is out of bounds.");
-    // }
-// }

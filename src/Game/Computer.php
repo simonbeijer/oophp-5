@@ -102,8 +102,7 @@ class Computer extends Game
         if (in_array(1, $this->values)) {
             $this->res = "Computer lost its points, your turn to throw.";
             $_SESSION["counter2"] = 0;
-        }
-        elseif (in_array(6, $this->values) | $sum2 > 8) {
+        } elseif (in_array(6, $this->values) | $sum2 > 8) {
             $this->res = "Computer is done, your turn to throw.";
         } else {
             $this->res = "Simulate again.";

@@ -123,7 +123,7 @@ $app->router->post("100-game/play", function () use ($app) {
         $_SESSION["score"] = $score;
         $res = $game->checkNumber();
         $_SESSION["res"] = $res;
-    }   elseif ($save) {
+    } elseif ($save) {
         $_SESSION["save"] = $save;
         $res = "Saved, simulate for computer.";
         $_SESSION["res"] = $res;

@@ -63,14 +63,27 @@ class GameCreateObjectTest extends TestCase
 
         $this->assertEquals($exp, $res);
     }
-
-    public function testCreateObjectScore2()
+    /**
+     * Construct object and verify that the object has the expected
+     * properties. Correct values.
+     */
+    public function testCreateObjectValues()
     {
         $game = new Game();
         $this->assertInstanceOf("\Sibj\Game\Game", $game);
-        $game->random();
-        $exp = $game->score();
-        $res = $game->addScore(42);
+        $res = $game->values(4, 2);
+    }
+
+    /**
+     * Construct object and verify that the object has the expected
+     * properties. CheckNumber.
+     */
+    public function testCreateObjectCheckNumber()
+    {
+        $game = new Game();
+        $this->assertInstanceOf("\Sibj\Game\Game", $game);
+        $res = $game->checkNumber(1, 2);
+        $exp = "You lost you points, simulate for computer.";
 
         $this->assertEquals($exp, $res);
     }
