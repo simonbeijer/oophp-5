@@ -13,7 +13,9 @@ class Game
     private $dices;
     private $values;
     private $score;
+    private $sum;
     private $res;
+
 
     /**
      * Constructor to initiate the object with current game settings,
@@ -22,8 +24,9 @@ class Game
      * @param int $dices  Number of dices the will be thrown.
      */
 
-    public function __construct(int $dices = 2)
+    public function __construct(int $sides = 6, int $dices = 2)
     {
+        $this->sides = $sides;
         $this->dices  = [];
         $this->values = [];
 

@@ -113,4 +113,27 @@ class Computer extends Game
         }
         return $this->res;
     }
+    //
+    // /**
+    // * Return a string with a textual representation of the histogram.
+    // *
+    // * @return string representing the histogram.
+    // */
+    // public function getAsText2()
+    // {
+    //     $string = "";
+    //     for ($i = 1; $i <= 6; $i++) {
+    //         $string .= $i . ": ";
+    //         foreach ($this->values as $num) {
+    //             if ($num === $i) {
+    //                 $string .= "*";
+    //             } else $string .= "";
+    //         }
+    //         $string .= "<br>";
+    //     }
+    //     if ($string == ": \n") {
+    //         $string = "";
+    //     }
+    //     return $string;
+        // }
 }
