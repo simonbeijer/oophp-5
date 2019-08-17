@@ -134,6 +134,8 @@ class GameController implements AppInjectableInterface
         $counter = $session->get("counter");
         $score = $session->get("score");
         $sum = $session->get("sum");
+        $print = $session->get("print");
+        $savehistogram = $session->get("savehistogram");
 
 
         //Computer
@@ -166,6 +168,9 @@ class GameController implements AppInjectableInterface
             "score2" => $score2,
             "res" => $res,
             "new" => $new,
+            "print" => $print,
+            "save" => $save,
+            "savehistogram" => $savehistogram,
         ];
 
         $page->add("game/play", $data);
@@ -204,6 +209,8 @@ class GameController implements AppInjectableInterface
         $counter = $session->get("counter");
         $score = $session->get("score");
         $sum = $session->get("sum");
+        $print = $session->get("print");
+        $savehistogram = $session->get("savehistogram");
 
 
         //Computer
@@ -217,9 +224,18 @@ class GameController implements AppInjectableInterface
         if ($request->getPost("throw")) {
             $session->set("throw", $throw);
             $game = new Game();
+
+            $game = new DiceHistogram2();
+
             $game->random();
+
+            $histogram = new Histogram();
+            $histogram->injectData($game);
+
+            $session->set("print", $histogram->getAsText());
+            $session->set("savehistogram", $histogram->getSerie());
+
             $session->set("sum", $game->sum());
-            $session->set("sum", $sum);
             $counter += $game->sum();
             $session->set("counter", $counter);
             $game->addScore($counter);
@@ -239,9 +255,17 @@ class GameController implements AppInjectableInterface
         if ($request->getPost("simulate")) {
             $session->set("simulate", $simulate);
             $computer = new Computer();
+
+            $computer = new DiceHistogram2();
+
             $computer->random();
+
+            $histogram = new Histogram();
+            $histogram->injectData($computer);
+            // $session->set($print, "print");
+            $session->set("print", implode(", ", $computer->values()));
+            $session->set("print", $histogram->getAsText());
             $session->set("sum2", $computer->sum());
-            $session->set("sum2", $sum2);
             $counter2 += $computer->sum();
             $session->set("counter2", $counter2);
             $computer->addScore($counter2);

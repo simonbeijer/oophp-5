@@ -15,6 +15,7 @@ class Game
     private $score;
     private $sum;
     private $res;
+    private $lastRoll;
 
 
     /**
@@ -23,42 +24,97 @@ class Game
 
      * @param int $dices  Number of dices the will be thrown.
      */
-
-    public function __construct(int $sides = 6, int $dices = 2)
+     /**
+    * Constructor to initiate the dicehand with a number of dices.
+    *
+    * @param int $dices Number of dices to create, defaults to five.
+    */
+    public function __construct(int $sides = 6)
     {
-        $this->sides = $sides;
-        $this->dices  = [];
-        $this->values = [];
-
-        for ($i = 0; $i < $dices; $i++) {
-            $this->dices[]  = rand(1, 6);
-            $this->values[] = $i;
-        }
+      $this->sides = $sides;
+      $this->dices  = [];
+      $this->values = [];
     }
 
     /**
-     * Randomize the dice for every throw.
-     *
-     * @return void
-     */
-
+    * Roll all dices save their value.
+    *
+    * @return void.
+    */
     public function random()
     {
-        foreach ($this->values as $key => $values) {
-            $this->values[$key] = rand(1, 6);
-        }
+      for ($i = 0; $i < 2; $i++) {
+          $this->roll();
+      }
+    }
+    /**
+    * Roll all dices save their value.
+    *
+    * @return void.
+    */
+    public function roll()
+    {
+      return $this->values = rand(1, 6);
+    }
+
+
+    public function rolls()
+    {
+     return $this->serie;
     }
 
     /**
-     * Get the throws.
-     *
-     * @return array as the throws values.
-     */
-
+    * Get values of dices from last roll.
+    *
+    * @return array with values of the last roll.
+    */
     public function values()
     {
-        return $this->values;
+      $this->values = $this->rolls();
+     return $this->values;
     }
+
+    /**
+    * @var int $lastRoll  Value of the last roll.
+    */
+    public function getLastRoll()
+    {
+     return $this->values;
+    }
+
+    // public function __construct(int $sides = 6, int $dices = 2)
+    // {
+    //     $this->sides = $sides;
+    //     $this->dices  = [];
+    //     $this->values = [];
+    //
+    //     for ($i = 0; $i < $dices; $i++) {
+    //         $this->dices[]  = rand(1, 6);
+    //         $this->values[] = $i;
+    //     }
+    // }
+    //
+    // /**
+    //  * Randomize the dice for every throw.
+    //  *
+    //  * @return void
+    //  */
+    //
+    // public function random()
+    // {
+    //     foreach ($this->values as $key => $values) {
+    //         $this->values[$key] = rand(1, 6);
+    //     }
+    // }    /**
+    //  * Get the throws.
+    //  *
+    //  * @return array as the throws values.
+    //  */
+    //
+    // public function values()
+    // {
+    //     return $this->values;
+    // }
 
     /**
      * Gets the counter number.
@@ -89,8 +145,21 @@ class Game
      */
     public function sum()
     {
-        return array_sum($this->values);
+        return array_sum($this->values());
     }
+
+
+    /**
+     * Get the serie.
+     *
+     * @return array with the serie.
+     */
+    public function getLastSerieCounter(array $lastSerie)
+    {
+        $this->values = array_merge($this->values, $lastSerie);
+        return $this->values;
+    }
+
 
     /**
      * Throw dice and cheak if the number, if the number is 0 counter empty
@@ -107,6 +176,30 @@ class Game
         }
         if ($this->score > 99) {
             $this->res = "You have won, computers have no chance.";
+            $_SESSION["counter"] = 0;
+            $_SESSION["counter2"] = 0;
+        }
+        return $this->res;
+    }
+
+    /**
+     * Throw dice and cheak if the number, if the number is 0 counter empty
+     * If number 100 there is a winner
+     *
+     * @return string to show the status of game.
+     */
+
+    public function checkNumberSum(int $sum2)
+    {
+        if (in_array(1, $this->values)) {
+            $this->res = "Computer lost its points, your turn to throw.";
+            $_SESSION["counter2"] = 0;
+        } elseif (in_array(6, $this->values) | $sum2 > 8) {
+            $this->res = "Computer is done, your turn to throw.";
+        } else {
+            $this->res = "Simulate again.";
+        } if ($this->score > 99) {
+            $this->res = "You have lost, computers will take over the world.<br>Just play again!";
             $_SESSION["counter"] = 0;
             $_SESSION["counter2"] = 0;
         }

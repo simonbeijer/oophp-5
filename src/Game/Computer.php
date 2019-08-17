@@ -15,6 +15,7 @@ class Computer extends Game
     private $score;
     private $sum;
     private $res;
+    private $lastRoll;
 
     /**
      * Constructor to initiate the object with current game settings,
@@ -22,41 +23,92 @@ class Computer extends Game
 
      * @param int $dices  Number of dices the will be thrown.
      */
+     public function __construct(int $sides = 6)
+     {
+       $this->sides = $sides;
+       $this->dices  = [];
+       $this->values = [];
+     }
 
-    public function __construct(int $dices = 2)
-    {
-        $this->dices  = [];
-        $this->values = [];
-
-        for ($i = 0; $i < $dices; $i++) {
-            $this->dices[]  = new Game;
-            $this->values[] = $i;
-        }
-    }
-
-    /**
-     * Randomize the dice for every throw.
+     /**
+     * Roll all dices save their value.
      *
-     * @return void
+     * @return void.
      */
-
-    public function random()
-    {
-        foreach ($this->values as $key => $values) {
-            $this->values[$key] = rand(1, 6);
-        }
-    }
-
-    /**
-     * Get the throws.
+     public function random()
+     {
+       for ($i = 0; $i < 2; $i++) {
+           $this->roll();
+       }
+     }
+     /**
+     * Roll all dices save their value.
      *
-     * @return array as the throws values.
+     * @return void.
      */
+     public function roll()
+     {
+       return $this->values = rand(1, 6);
+     }
 
-    public function values()
-    {
-        return $this->values;
-    }
+
+     public function rolls()
+     {
+      return $this->serie;
+     }
+
+     /**
+     * Get values of dices from last roll.
+     *
+     * @return array with values of the last roll.
+     */
+     public function values()
+     {
+       $this->values = $this->rolls();
+      return $this->values;
+     }
+
+     /**
+     * @var int $lastRoll  Value of the last roll.
+     */
+     public function getLastRoll()
+     {
+      return $this->values;
+     }
+    // public function __construct(int $dices = 2)
+    // {
+    //     $this->dices  = [];
+    //     $this->values = [];
+    //
+    //     for ($i = 0; $i < $dices; $i++) {
+    //         $this->dices[]  = new Game;
+    //         $this->values[] = $i;
+    //     }
+    // }
+    //
+    // /**
+    //  * Randomize the dice for every throw.
+    //  *
+    //  * @return void
+    //  */
+    //
+    // public function random()
+    // {
+    //     foreach ($this->values as $key => $values) {
+    //         $this->values[$key] = rand(1, 6);
+    //     }
+    // }
+    //
+    // /**
+    //  * Get the throws.
+    //  *
+    //  * @return array as the throws values.
+    //  */
+    //
+    // public function values()
+    // {
+    //     return $this->values;
+    // }
 
     /**
      * Gets the counter number.
@@ -113,27 +165,4 @@ class Computer extends Game
         }
         return $this->res;
     }
-    //
-    // /**
-    // * Return a string with a textual representation of the histogram.
-    // *
-    // * @return string representing the histogram.
-    // */
-    // public function getAsText2()
-    // {
-    //     $string = "";
-    //     for ($i = 1; $i <= 6; $i++) {
-    //         $string .= $i . ": ";
-    //         foreach ($this->values as $num) {
-    //             if ($num === $i) {
-    //                 $string .= "*";
-    //             } else $string .= "";
-    //         }
-    //         $string .= "<br>";
-    //     }
-    //     if ($string == ": \n") {
-    //         $string = "";
-    //     }
-    //     return $string;
-        // }
 }
