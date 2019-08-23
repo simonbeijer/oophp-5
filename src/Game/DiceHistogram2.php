@@ -45,5 +45,4 @@ class DiceHistogram2 extends Game implements HistogramInterface
     {
         return $this->serie;
     }
-
 }

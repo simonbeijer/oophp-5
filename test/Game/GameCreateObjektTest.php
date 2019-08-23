@@ -28,7 +28,10 @@ class GameCreateObjectTest extends TestCase
     public function testCreateObjectSumLess()
     {
         $game = new Game();
+        $histogram = new Histogram();
+        $game = new DiceHistogram2();
         $this->assertInstanceOf("\Sibj\Game\Game", $game);
+
         $game->random();
         $res = $game->sum();
 
@@ -42,6 +45,8 @@ class GameCreateObjectTest extends TestCase
     public function testCreateObjectSumGreater()
     {
         $game = new Game();
+        $histogram = new Histogram();
+        $game = new DiceHistogram2();
         $this->assertInstanceOf("\Sibj\Game\Game", $game);
         $game->random();
         $res = $game->sum();
@@ -78,13 +83,41 @@ class GameCreateObjectTest extends TestCase
      * Construct object and verify that the object has the expected
      * properties. CheckNumber.
      */
-    public function testCreateObjectCheckNumber()
+    public function testCreateObject()
     {
         $game = new Game();
+        $histogram = new Histogram();
+        $game = new DiceHistogram2();
         $this->assertInstanceOf("\Sibj\Game\Game", $game);
-        $res = $game->checkNumber(1, 2);
-        $exp = "You lost you points, simulate for computer.";
 
-        $this->assertEquals($exp, $res);
+        $this->assertIsObject($game);
+    }
+
+    /**
+     * Construct object and verify that the object has the expected
+     * properties. CheckNumber.
+     */
+    public function testCreateObjectHistogram()
+    {
+        $game = new Game();
+        $histogram = new Histogram();
+        $game = new DiceHistogram2();
+        $this->assertInstanceOf("\Sibj\Game\Game", $game);
+
+        $this->assertIsObject($histogram);
+    }
+
+    /**
+     * Construct object and verify that the object has the expected
+     * properties. CheckNumber.
+     */
+    public function testCreateObjectHistogram2()
+    {
+        $game = new Game();
+        $histogram = new Histogram();
+        $game = new DiceHistogram2();
+        $this->assertInstanceOf("\Sibj\Game\Game", $game);
+
+        $this->assertIsObject($game);
     }
 }

@@ -13,68 +13,67 @@ class Computer extends Game
     private $dices;
     private $values;
     private $score;
-    private $sum;
     private $res;
-    private $lastRoll;
+    private $serie;
 
     /**
-     * Constructor to initiate the object with current game settings,
-     * if available. Creating a array of dices.
+    * Constructor to initiate the object with current game settings,
+    * if available. Creating a array of dices.
 
-     * @param int $dices  Number of dices the will be thrown.
-     */
-     public function __construct(int $sides = 6)
-     {
-       $this->sides = $sides;
-       $this->dices  = [];
-       $this->values = [];
-     }
+    * @param int $dices  Number of dices the will be thrown.
+    */
+    public function __construct(int $sides = 6)
+    {
+        $this->sides = $sides;
+        $this->dices  = [];
+        $this->values = [];
+    }
 
-     /**
-     * Roll all dices save their value.
-     *
-     * @return void.
-     */
-     public function random()
-     {
-       for ($i = 0; $i < 2; $i++) {
-           $this->roll();
-       }
-     }
-     /**
-     * Roll all dices save their value.
-     *
-     * @return void.
-     */
-     public function roll()
-     {
-       return $this->values = rand(1, 6);
-     }
+    /**
+    * Roll all dices save their value.
+    *
+    * @return void.
+    */
+    public function random()
+    {
+        for ($i = 0; $i < 2; $i++) {
+            $this->roll();
+        }
+    }
+    /**
+    * Roll all dices save their value.
+    *
+    * @return void.
+    */
+    public function roll()
+    {
+        return $this->values = rand(1, 6);
+    }
 
 
-     public function rolls()
-     {
-      return $this->serie;
-     }
+    public function rolls()
+    {
+        return $this->serie;
+    }
 
-     /**
-     * Get values of dices from last roll.
-     *
-     * @return array with values of the last roll.
-     */
-     public function values()
-     {
-       $this->values = $this->rolls();
-      return $this->values;
-     }
+    /**
+    * Get values of dices from last roll.
+    *
+    * @return array with values of the last roll.
+    */
+    public function values()
+    {
+        $this->values = $this->rolls();
+        return $this->values;
+    }
 
-     /**
-     * @var int $lastRoll  Value of the last roll.
-     */
-     public function getLastRoll()
-     {
-      return $this->values;
-     }
+    /**
+    * @var int $lastRoll  Value of the last roll.
+    */
+    public function getLastRoll()
+    {
+        return $this->values;
+    }
     // public function __construct(int $dices = 2)
     // {
     //     $this->dices  = [];
@@ -111,10 +110,10 @@ class Computer extends Game
     // }
 
     /**
-     * Gets the counter number.
-     *
-     * Adds to score
-     */
+    * Gets the counter number.
+    *
+    * Adds to score
+    */
 
     public function addScore(int $counter2)
     {
@@ -122,10 +121,10 @@ class Computer extends Game
     }
 
     /**
-     * Get the score of game.
-     *
-     * @return int as the score number.
-     */
+    * Get the score of game.
+    *
+    * @return int as the score number.
+    */
 
     public function score()
     {
@@ -133,36 +132,58 @@ class Computer extends Game
     }
 
     /**
-     * Get the sum of all dices.
-     *
-     * @return int as the sum of all dices.
-     */
+    * Get the sum of all dices.
+    *
+    * @return int as the sum of all dices.
+    */
     public function sum()
     {
         return array_sum($this->values);
     }
 
     /**
-     * Throw dice and cheak if the number, if the number is 0 counter empty
-     * If number 100 there is a winner
-     *
-     * @return string to show the status of game.
-     */
+    * Throw dice and cheak if the number, if the number is 0 counter empty
+    * If number 100 there is a winner
+    *
+    * @return string to show the status of game.
+    */
 
     public function checkNumberSum(int $sum2)
     {
-        if (in_array(1, $this->values)) {
-            $this->res = "Computer lost its points, your turn to throw.";
-            $_SESSION["counter2"] = 0;
-        } elseif (in_array(6, $this->values) | $sum2 > 8) {
-            $this->res = "Computer is done, your turn to throw.";
+        if (array_sum($_SESSION["allhistogram"]) > 50) {
+            if (in_array(1, $this->values)) {
+                $this->res = "Computer lost its points, your turn to throw.";
+                $_SESSION["counter2"] = 0;
+                $_SESSION["savehistogram2"] = "";
+            } elseif (in_array(6, $this->values) | $sum2 > 9) {
+                $this->res = "Computer is done, your turn to throw.";
+            } else {
+                $this->res = "Simulate again.";
+            } if ($this->score > 99) {
+                $this->res = "You have lost, computers will take over the world.<br>Just play again!";
+                $_SESSION["counter"] = 0;
+                $_SESSION["counter2"] = 0;
+                $_SESSION["savehistogram"] = "";
+                $_SESSION["savehistogram2"] = "";
+            }
+            return $this->res;
         } else {
-            $this->res = "Simulate again.";
-        } if ($this->score > 99) {
-            $this->res = "You have lost, computers will take over the world.<br>Just play again!";
-            $_SESSION["counter"] = 0;
-            $_SESSION["counter2"] = 0;
+            if (in_array(1, $this->values)) {
+                $this->res = "Computer lost its points, your turn to throw.";
+                $_SESSION["counter2"] = 0;
+                $_SESSION["savehistogram2"] = "";
+            } elseif (in_array(5, $this->values) | $sum2 > 8) {
+                $this->res = "Computer is done, your turn to throw.";
+            } else {
+                $this->res = "Simulate again.";
+            } if ($this->score > 99) {
+                $this->res = "You have lost, computers will take over the world.<br>Just play again!";
+                $_SESSION["counter"] = 0;
+                $_SESSION["counter2"] = 0;
+                $_SESSION["savehistogram"] = "";
+                $_SESSION["savehistogram2"] = "";
+            }
+            return $this->res;
         }
-        return $this->res;
     }
 }

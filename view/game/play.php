@@ -27,14 +27,13 @@ namespace Anax\View;
 <p><b>Sum: <?= $sum ?></b></p>
 <p><b>Score: <?= $score ?></b></p>
 <p><b><pre>Histogram: <?php echo "<br>" . $print ?></pre></b></p>
-<p><b>SaveHistogram: <?= var_dump($savehistogram) ?></b></p>
 <?php endif;?>
 
 <?php if ($simulate) :?>
 <p><b>Dice: <?=$values2 ?></b></p>
 <p><b>Sum: <?= $sum2 ?></b></p>
 <p><b>Score: <?= $score2 ?></b></p>
-<p><b><pre>Histogram: <?php echo "<br>" . $print ?></pre></b></p>
+<p><b><pre>Histogram: <?php echo "<br>" . $print2 ?></pre></b></p>
 <?php endif;?>
 
 <?php if ($new) :?>

@@ -85,7 +85,7 @@ class GameController implements AppInjectableInterface
      *
      * @return string
      */
-    public function initAction() : ob
+    public function initAction() : object
     {
         $session = $this->app->session;
         $response = $this->app->response;
@@ -96,6 +96,19 @@ class GameController implements AppInjectableInterface
         $computer = new Computer();
         $session->set("counter2", null);
 
+
+        $game = new DiceHistogram2();
+
+        $session->set("allhistogram", array());
+        $session->set("savehistogram", "");
+        $session->set("values", "");
+
+        $session->set("allhistogram2", array());
+        $session->set("savehistogram2", "");
+        $session->set("values2", "");
+        $session->set("sum2", 0);
+
+        $histogram = new Histogram();
         $session->set("new", "New Game");
 
         return $response->redirect("game/play");
@@ -136,13 +149,16 @@ class GameController implements AppInjectableInterface
         $sum = $session->get("sum");
         $print = $session->get("print");
         $savehistogram = $session->get("savehistogram");
-
+        $allhistogram = $session->get("allhistogram");
 
         //Computer
         $values2 = $session->get("values2");
         $counter2 = $session->get("counter2");
         $score2 = $session->get("score2");
         $sum2 = $session->get("sum2");
+        $print2 = $session->get("print2");
+        $savehistogram2 = $session->get("savehistogram2");
+        $allhistogram2 = $session->get("allhistogram2");
 
 
 
@@ -169,8 +185,11 @@ class GameController implements AppInjectableInterface
             "res" => $res,
             "new" => $new,
             "print" => $print,
-            "save" => $save,
+            "print2" => $print2,
             "savehistogram" => $savehistogram,
+            "savehistogram2" => $savehistogram2,
+            "allhistogram" => $allhistogram,
+            "allhistogram2" => $allhistogram2,
         ];
 
         $page->add("game/play", $data);
@@ -211,6 +230,8 @@ class GameController implements AppInjectableInterface
         $sum = $session->get("sum");
         $print = $session->get("print");
         $savehistogram = $session->get("savehistogram");
+        $allhistogram = $session->get("allhistogram");
+
 
 
         //Computer
@@ -218,23 +239,25 @@ class GameController implements AppInjectableInterface
         $counter2 = $session->get("counter2");
         $score2 = $session->get("score2");
         $sum2 = $session->get("sum2");
+        $print2 = $session->get("print2");
+        $savehistogram2 = $session->get("savehistogram2");
+        $allhistogram2 = $session->get("allhistogram2");
 
 
 
         if ($request->getPost("throw")) {
             $session->set("throw", $throw);
             $game = new Game();
-
             $game = new DiceHistogram2();
-
             $game->random();
-
             $histogram = new Histogram();
             $histogram->injectData($game);
-
+            $savehistogram .= implode(array_values($game->values()));
+            $session->set("savehistogram", $savehistogram);
+            $histogram->saveHistogram($savehistogram);
+            $session->set("allhistogram", $allhistogram);
+            $session->set("allhistogram", $histogram->getSaveHistogram());
             $session->set("print", $histogram->getAsText());
-            $session->set("savehistogram", $histogram->getSerie());
-
             $session->set("sum", $game->sum());
             $counter += $game->sum();
             $session->set("counter", $counter);
@@ -245,7 +268,6 @@ class GameController implements AppInjectableInterface
             $session->set("score", $score);
             $res = $game->checkNumber();
             $session->set("res", $res);
-
         } elseif ($request->getPost("save")) {
             $session->set("save", $save);
             $res = "Saved, simulate for computer.";
@@ -255,16 +277,16 @@ class GameController implements AppInjectableInterface
         if ($request->getPost("simulate")) {
             $session->set("simulate", $simulate);
             $computer = new Computer();
-
             $computer = new DiceHistogram2();
-
             $computer->random();
-
             $histogram = new Histogram();
             $histogram->injectData($computer);
-            // $session->set($print, "print");
-            $session->set("print", implode(", ", $computer->values()));
-            $session->set("print", $histogram->getAsText());
+            $savehistogram2 .= implode(array_values($computer->values()));
+            $session->set("savehistogram2", $savehistogram2);
+            $histogram->saveHistogram($savehistogram2);
+            $session->set("allhistogram2", $allhistogram2);
+            $session->set("allhistogram2", $histogram->getSaveHistogram());
+            $session->set("print2", $histogram->getAsText($allhistogram2));
             $session->set("sum2", $computer->sum());
             $counter2 += $computer->sum();
             $session->set("counter2", $counter2);

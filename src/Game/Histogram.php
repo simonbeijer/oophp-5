@@ -13,11 +13,12 @@ class Histogram
      * @var int   $max    The highest possible number.
      */
     public $serie = [];
-    public $serieCounter = [];
-    public $serieText = [];
-    public $array = [];
+    public $thisserie = [];
     private $min;
     private $max;
+    public $array = [];
+    public $allvalues = [];
+
 
 
 
@@ -36,12 +37,33 @@ class Histogram
      *
      * @return array with the serie.
      */
-    public function saveHistogram(array $histogramvalues)
+    public function saveHistogram(string $savehistogram)
     {
-        $this->serieAll = $histogramvalues;
-        return $this->serieAll;
+        $number = number_format($savehistogram);
+        $this->array  = array_map('intval', str_split($number));
+        return $this->array;
     }
 
+    /**
+     * Get the serie.
+     *
+     * @return array with the serie.
+     */
+    public function getSaveHistogram()
+    {
+        return $this->array;
+    }
+
+    // /**
+    //  * Get the serie.
+    //  *
+    //  * @return array with the serie.
+    //  */
+    // public function valuesSaveHistogram(array $allhistogram)
+    // {
+    //     $allvalues = $allhistogram;
+    //     return $allvalues;
+    // }
 
 
     /**
@@ -54,19 +76,20 @@ class Histogram
         $string = "";
         for ($i = $this->min; $i <= $this->max; $i++) {
             $string .= $i . ": ";
-            foreach ($this->serie as $num) {
+            foreach ($this->getSaveHistogram() as $num) {
                 if ($num === $i) {
                     $string .= "*";
-                } else $string .= "";
+                } else { $string .= "";
+                    }
             }
             $string .= "\n";
         }
         if ($string == ": \n") {
             $string = "";
         }
-    return $string;
-
+        return $string;
     }
+
 
     /**
     * Inject the object to use as base for the histogram data.
@@ -77,8 +100,8 @@ class Histogram
     */
     public function injectData(HistogramInterface $object)
     {
-    $this->serie = $object->getHistogramSerie();
-    $this->min   = $object->getHistogramMin();
-    $this->max   = $object->getHistogramMax();
+        $this->serie = $object->getHistogramSerie();
+        $this->min   = $object->getHistogramMin();
+        $this->max   = $object->getHistogramMax();
     }
 }

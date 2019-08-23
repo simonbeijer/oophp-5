@@ -13,9 +13,8 @@ class Game
     private $dices;
     private $values;
     private $score;
-    private $sum;
     private $res;
-    private $lastRoll;
+    private $serie;
 
 
     /**
@@ -31,9 +30,9 @@ class Game
     */
     public function __construct(int $sides = 6)
     {
-      $this->sides = $sides;
-      $this->dices  = [];
-      $this->values = [];
+        $this->sides = $sides;
+        $this->dices  = [];
+        $this->values = [];
     }
 
     /**
@@ -43,9 +42,9 @@ class Game
     */
     public function random()
     {
-      for ($i = 0; $i < 2; $i++) {
-          $this->roll();
-      }
+        for ($i = 0; $i < 2; $i++) {
+            $this->roll();
+        }
     }
     /**
     * Roll all dices save their value.
@@ -54,13 +53,13 @@ class Game
     */
     public function roll()
     {
-      return $this->values = rand(1, 6);
+        return $this->values = rand(1, 6);
     }
 
 
     public function rolls()
     {
-     return $this->serie;
+        return $this->serie;
     }
 
     /**
@@ -70,8 +69,8 @@ class Game
     */
     public function values()
     {
-      $this->values = $this->rolls();
-     return $this->values;
+        $this->values = $this->rolls();
+        return $this->values;
     }
 
     /**
@@ -79,7 +78,7 @@ class Game
     */
     public function getLastRoll()
     {
-     return $this->values;
+        return $this->values;
     }
 
     // public function __construct(int $sides = 6, int $dices = 2)
@@ -173,11 +172,15 @@ class Game
         if (in_array(1, $this->values)) {
             $this->res = "You lost you points, simulate for computer.";
             $_SESSION["counter"] = 0;
+            $_SESSION["savehistogram"] = "";
+            $_SESSION["savehistogram2"] = "";
         }
         if ($this->score > 99) {
             $this->res = "You have won, computers have no chance.";
             $_SESSION["counter"] = 0;
             $_SESSION["counter2"] = 0;
+            $_SESSION["savehistogram"] = "";
+            $_SESSION["savehistogram2"] = "";
         }
         return $this->res;
     }
@@ -191,18 +194,40 @@ class Game
 
     public function checkNumberSum(int $sum2)
     {
-        if (in_array(1, $this->values)) {
-            $this->res = "Computer lost its points, your turn to throw.";
-            $_SESSION["counter2"] = 0;
-        } elseif (in_array(6, $this->values) | $sum2 > 8) {
-            $this->res = "Computer is done, your turn to throw.";
+        if (array_sum($_SESSION["allhistogram"]) > 50) {
+            if (in_array(1, $this->values)) {
+                $this->res = "Computer lost its points, your turn to throw.";
+                $_SESSION["counter2"] = 0;
+                $_SESSION["savehistogram2"] = "";
+            } elseif (in_array(6, $this->values) | $sum2 > 10) {
+                $this->res = "Computer is done, your turn to throw.";
+            } else {
+                $this->res = "Simulate again.";
+            } if ($this->score > 99) {
+                $this->res = "You have lost, computers will take over the world.<br>Just play again!";
+                $_SESSION["counter"] = 0;
+                $_SESSION["counter2"] = 0;
+                $_SESSION["savehistogram"] = "";
+                $_SESSION["savehistogram2"] = "";
+            }
+            return $this->res;
         } else {
-            $this->res = "Simulate again.";
-        } if ($this->score > 99) {
-            $this->res = "You have lost, computers will take over the world.<br>Just play again!";
-            $_SESSION["counter"] = 0;
-            $_SESSION["counter2"] = 0;
+            if (in_array(1, $this->values)) {
+                $this->res = "Computer lost its points, your turn to throw.";
+                $_SESSION["counter2"] = 0;
+                $_SESSION["savehistogram2"] = "";
+            } elseif (in_array(6, $this->values) | $sum2 > 8) {
+                $this->res = "Computer is done, your turn to throw.";
+            } else {
+                $this->res = "Simulate again.";
+            } if ($this->score > 99) {
+                $this->res = "You have lost, computers will take over the world.<br>Just play again!";
+                $_SESSION["counter"] = 0;
+                $_SESSION["counter2"] = 0;
+                $_SESSION["savehistogram"] = "";
+                $_SESSION["savehistogram2"] = "";
+            }
+            return $this->res;
         }
-        return $this->res;
     }
 }

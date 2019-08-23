@@ -67,14 +67,14 @@ class GameControllerTest extends TestCase
         $this->assertInstanceOf(ResponseUtility::class, $res);
     }
 
-    /**
-     * Call the controller play get action.
-     */
-     public function testPlayActionGet()
-     {
-         $res = $this->controller->playActionGet();
-         $this->assertInstanceOf(ResponseUtility::class, $res);
-     }
+    // /**
+    //  * Call the controller play get action.
+    //  */
+    //  public function testPlayActionGet()
+    //  {
+    //      $res = $this->controller->playActionGet();
+    //      $this->assertInstanceOf(ResponseUtility::class, $res);
+    //  }
 
     /**
      * Call the controller play post action.
