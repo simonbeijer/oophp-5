@@ -193,7 +193,7 @@ class GameController implements AppInjectableInterface
         ];
 
         $page->add("game/play", $data);
-        $page->add("game/debug");
+        // $page->add("game/debug");
 
         return $page->render([
             "title" => $title,

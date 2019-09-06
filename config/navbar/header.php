@@ -68,5 +68,10 @@ return [
             "url" => "100-game",
             "title" => "Spel först till 100",
         ],
+        [
+            "text" => "Movie",
+            "url" => "movie",
+            "title" => "Film tabell",
+        ],
     ],
 ];

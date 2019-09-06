@@ -99,3 +99,8 @@ Footer
 .footer-column-1 p,h4 {
     padding-left: 14px;
 }
+
+img.thumb {
+    max-width: 100px;
+    max-height: 100px;
+}
