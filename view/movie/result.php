@@ -10,6 +10,7 @@ namespace Anax\View;
 //echo showEnvironment(get_defined_vars(), get_defined_functions());
 
 
+
 ?>
 <br><br>
 <a style="text-decoration: none;" href="<?= url("../htdocs/movie") ?>">Select all |</a>
@@ -19,13 +20,12 @@ namespace Anax\View;
 
 <?php
 
+
 if (!$resultset) {
     return;
 }
 
-
 ?>
-
 <br><br>
 <table>
     <tr class="first">
@@ -40,7 +40,7 @@ if (!$resultset) {
     <tr>
         <td><?= $id ?></td>
         <td><?= $row->id ?></td>
-        <td><img class="thumb" src="<?= $row->image ?>"></td>
+        <td><img class="thumb" src="<?= "../" .  $row->image ?>"></td>
         <td><?= $row->title ?></td>
         <td><?= $row->year ?></td>
     </tr>

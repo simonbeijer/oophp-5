@@ -1,9 +1,10 @@
 <?php
 
 namespace Sibj\Movie;
+
 /**
- * General functions.
- */
+* General functions.
+*/
 
     /**
     * Get value from GET variable or return default value.
@@ -13,12 +14,13 @@ namespace Sibj\Movie;
     *
     * @return mixed value from GET or the default value
     */
-    function getGet($key, $default = null)
-    {
+
+function getGet($key, $default = null)
+{
         return isset($_GET[$key])
-         ? $_GET[$key]
-         : $default;
-    }
+        ? $_GET[$key]
+        : $default;
+}
 
 
 
@@ -30,12 +32,13 @@ namespace Sibj\Movie;
     *
     * @return mixed value from POST or the default value
     */
-    function getPost($key, $default = null)
-    {
+
+function getPost($key, $default = null)
+{
         return isset($_POST[$key])
-         ? $_POST[$key]
-         : $default;
-    }
+        ? $_POST[$key]
+        : $default;
+}
 
 
 
@@ -46,10 +49,11 @@ namespace Sibj\Movie;
     *
     * @return string beeing sanitized
     */
-    function esc($value)
-    {
+
+function esc($value)
+{
     return htmlentities($value);
-    }
+}
 
 
 
@@ -61,15 +65,16 @@ namespace Sibj\Movie;
     *
     * @return string with links to order by column.
     */
-    function orderby($column, $route)
-    {
+
+function orderby($column, $route)
+{
         return <<<EOD
 <span class="orderby">
 <a href="{$route}orderby={$column}&order=asc">&darr;</a>
 <a href="{$route}orderby={$column}&order=desc">&uarr;</a>
 </span>
 EOD;
-    }
+}
 
 
 
@@ -81,8 +86,9 @@ EOD;
     *
     * @return string with links to order by column.
     */
-    function orderby2($column, $route)
-    {
+
+function orderby2($column, $route)
+{
         $asc = mergeQueryString(["orderby" => $column, "order" => "asc"], $route);
         $desc = mergeQueryString(["orderby" => $column, "order" => "desc"], $route);
 
@@ -92,7 +98,7 @@ EOD;
 <a href="$desc">&uarr;</a>
 </span>
 EOD;
-    }
+}
 
 
 
@@ -106,8 +112,9 @@ EOD;
     *
     * @return string as an url with the updated query string.
     */
-    function mergeQueryString($options, $prepend = "?")
-    {
+
+function mergeQueryString($options, $prepend = "?")
+{
         // Parse querystring into array
         $query = [];
         parse_str($_SERVER["QUERY_STRING"], $query);
@@ -117,4 +124,4 @@ EOD;
 
         // Build and return the modified querystring as url
         return $prepend . http_build_query($query);
-    }
+}

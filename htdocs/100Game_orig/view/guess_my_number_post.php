@@ -17,7 +17,7 @@
 <?php endif;?>
 
 <?php if ($throw) :?>
-<p><b>Dice: <?=implode(", " ,$game->values()) ?></b></p>
+<p><b>Dice: <?=implode(", ", $game->values()) ?></b></p>
 
 <p><b>Sum: <?= $game->sum() ?></b></p>
 
@@ -26,7 +26,7 @@
 
 
 <?php if ($simulate) :?>
-<p><b>Dice: <?=implode(", " ,$computer->values()) ?></b></p>
+<p><b>Dice: <?=implode(", ", $computer->values()) ?></b></p>
 
 <p><b>Sum: <?= $computer->sum() ?></b></p>
 

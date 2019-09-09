@@ -80,7 +80,7 @@ class Histogram
                 if ($num === $i) {
                     $string .= "*";
                 } else { $string .= "";
-                    }
+                }
             }
             $string .= "\n";
         }

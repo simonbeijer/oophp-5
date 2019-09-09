@@ -23,7 +23,6 @@ switch ($route) {
         $sql = "SELECT * FROM movie;";
         $resultset = $db->executeFetchAll($sql);
         break;
-
     case "show-all-sort":
         $title = "Show and sort all movies";
         $view[] = "view/show-all-sort.php";
@@ -40,7 +39,6 @@ switch ($route) {
         if (!(in_array($orderBy, $columns) && in_array($order, $orders))) {
             die("Not valid input for sorting.");
         }
-
         $sql = "SELECT * FROM movie ORDER BY $orderBy $order;";
         $resultset = $db->executeFetchAll($sql);
         break;
