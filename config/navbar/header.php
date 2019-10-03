@@ -51,27 +51,37 @@ return [
         [
             "text" => "Test &amp; Lek",
             "url" => "lek",
-            "title" => "Testa och lek med test- och exempelprogram",
+            "title" => "Testa och lek med test- och exempelprogram.",
         ],
         [
             "text" => "Anax dev",
             "url" => "dev",
-            "title" => "Anax development utilities",
+            "title" => "Anax development utilities.",
         ],
         [
             "text" => "Guess game",
             "url" => "guess-game",
-            "title" => "Spela gissa mitt nummber",
+            "title" => "Spela gissa mitt nummber.",
         ],
         [
             "text" => "100 Game",
             "url" => "100-game",
-            "title" => "Spel först till 100",
+            "title" => "Spel först till 100.",
         ],
         [
             "text" => "Movie",
             "url" => "movie",
-            "title" => "Film tabell",
+            "title" => "Film tabell.",
+        ],
+        [
+            "text" => "Blogg",
+            "url" => "blogg",
+            "title" => "Blogg.",
+        ],
+        [
+            "text" => "TextFilter",
+            "url" => "textfilter",
+            "title" => "TextFilter.",
         ],
     ],
 ];
