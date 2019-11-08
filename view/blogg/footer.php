@@ -4,7 +4,7 @@ namespace Anax\View;
 ?>
 </main>
 <footer>
-    <p><a href="http://www.catb.org/hacker-emblem/">⠄⠅⠆</a> MegaMic</p>
+    <p>&copy; Nomis</p>
 </footer>
 </body>
 </html>

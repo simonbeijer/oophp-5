@@ -7,11 +7,11 @@ namespace Anax\View;
     <fieldset>
     <legend>Delete</legend>
 
-    <input type="hidden" name="contentId" value="<?= esc($content->id) ?>"/>
+    <input type="hidden" name="id" value="<?= $resultset->id ?>"/>
 
     <p>
         <label>Title:<br>
-            <input type="text" name="contentTitle" value="<?= esc($content->title) ?>" readonly/>
+            <input type="text" name="contentTitle" value="<?= $resultset->title ?>" readonly/>
         </label>
     </p>
 

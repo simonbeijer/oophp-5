@@ -15,9 +15,9 @@ namespace Anax\View;
 <navbar class="navbar">
     <a href=<?= url("../htdocs/blogg/index") ?>>Show all content</a> |
     <a href=<?= url("../htdocs/blogg/admin") ?>>Admin</a> |
-    <a href="?route=create">Create</a> |
-    <a href="?route=pages">View pages</a> |
-    <a href="?route=blog">View blog</a> |
+    <a href=<?= url("../htdocs/blogg/create") ?>>Create</a> |
+    <a href=<?= url("../htdocs/blogg/pages") ?>>View pages</a> |
+    <a href=<?= url("../htdocs/blogg/blog") ?>>View blog</a> |
 </navbar>
 
 <h1>My Content Database</h1>

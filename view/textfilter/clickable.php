@@ -34,7 +34,7 @@ $html = $mytextfilter->parse($text, "link");
 <?= $text ?>
 
 <h3>Filter Clickable applied, source</h3>
-<pre><?= wordwrap(htmlentities($html)) ?></pre>
+<p><?= wordwrap(htmlentities($html)) ?></p>
 
 <h3>Filter Clickable applied, HTML</h3>
 <?= $html ?>

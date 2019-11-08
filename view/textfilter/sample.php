@@ -29,7 +29,7 @@ $html = $mytextfilter->parse($text, "markdown");
 <pre><?= $text ?></pre>
 
 <h2>Text formatted as HTML source</h2>
-<pre><?= htmlentities($html) ?></pre>
+<p><?= htmlentities($html) ?></p>
 
 <h2>Text displayed as HTML</h2>
 <?= $html ?>

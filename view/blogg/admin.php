@@ -1,5 +1,4 @@
 <?php
-namespace Anax\View;
 
 if (!$resultset) {
     return;
@@ -28,10 +27,10 @@ if (!$resultset) {
         <td><?= $row->updated ?></td>
         <td><?= $row->deleted ?></td>
         <td>
-            <a class="icons" href="?route=edit&amp;id=<?= $row->id ?>" title="Edit this content">
+            <a class="icons" href="edit?id=<?= $row->id ?>" title="Edit this content">
                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             </a>
-            <a class="icons" href="?route=delete&amp;id=<?= $row->id ?>" title="Edit this content">
+            <a class="icons" href="delete?id=<?= $row->id ?>" title="Edit this content">
                 <i class="fa fa-trash-o" aria-hidden="true"></i>
             </a>
         </td>

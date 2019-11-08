@@ -4,8 +4,8 @@ namespace Anax\View;
 ?>
 <article>
     <header>
-        <h1><?= esc($content->title) ?></h1>
-        <p><i>Latest update: <time datetime="<?= esc($content->modified_iso8601) ?>" pubdate><?= esc($content->modified) ?></time></i></p>
+        <h1><?=$resultset->title ?></h1>
+        <p><i>Latest update: <time datetime="<?= $resultset->modified_iso8601 ?>"pubdate><?= $resultset->modified ?></time></i></p>
     </header>
-    <?= esc($content->data) ?>
+    <?= $html ?>
 </article>

@@ -2,9 +2,6 @@
 
 namespace Sibj\Movie;
 
-/**
-* General functions.
-*/
 
     /**
     * Get value from GET variable or return default value.
